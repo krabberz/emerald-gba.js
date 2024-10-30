@@ -12,19 +12,29 @@ Licensed under the MIT License (view LICENSE.md for more information)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokémon Emerald ROM Hack</title>
-    <!-- Include the GBA.js script if required, otherwise keep it embedded -->
-    <script src="gba.js"></script>
+    <script src="emerald-gba.js"></script> <!-- Include IodineGBA -->
 </head>
 <body>
-    <h1>Pokémon Emerald ROM Hack</h1>
+    <h1>Welcome to Pokémon Emerald!</h1>
     <p>Your ROM hack is loading...</p>
-    
+
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const gba = new GameBoyAdvanceEmulator();  // Initialize emulator if needed
-            gba.loadRomFromFile('binaries/max_random.gba');  // Path to your ROM file
-            gba.run();  // Start the emulator
-        });
+        var gba = new IodineGBA();  
+
+        gba.loadRomFromFile('binaries/max_random.gba'); 
+
+        gba.run();  
+
+        gba.onError = function(error) {
+            console.error("Error loading ROM:", error);
+            document.body.innerHTML = "<h1>Error loading ROM!</h1><p>" + error + "</p>";
+        };
+
+        gba.onLoad = function() {
+            console.log("ROM loaded successfully.");
+            document.body.innerHTML = "<h1>ROM Loaded!</h1><p>Enjoy your game!</p>";
+        };
     </script>
 </body>
 </html>
+
