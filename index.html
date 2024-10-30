@@ -11,20 +11,25 @@ Licensed under the MIT License (view LICENSE.md for more information)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokémon Emerald Max Random</title>
+    <title>Pokémon Emerald ROM Hack</title>
     <script src="iodinegba/core/emulator.js"></script> <!-- Include the emulator.js file -->
     <link rel="stylesheet" href="style.css"> <!-- If you have any styles -->
 </head>
 <body>
+    <h1>Welcome to Pokémon Emerald!</h1>
     <p>Your ROM hack is loading...</p>
     
     <script>
-        var gba = new IodineGBA(); 
+        // Create a new instance of the IodineGBA emulator
+        var gba = new IodineGBA(); // Adjust this if necessary
 
-        gba.loadRomFromFile('binaries/max_random.gba'); 
+        // Load the ROM file
+        gba.loadRomFromFile('binaries/max_random.gba'); // Ensure the path is correct
 
-        gba.run(); 
+        // Start the emulator
+        gba.run(); // Start the emulation process
 
+        // Optional: Handle errors or loading states
         gba.onError = function(error) {
             console.error("Error loading ROM:", error);
             document.body.innerHTML = "<h1>Error loading ROM!</h1><p>" + error + "</p>";
@@ -37,5 +42,4 @@ Licensed under the MIT License (view LICENSE.md for more information)
     </script>
 </body>
 </html>
-
 
